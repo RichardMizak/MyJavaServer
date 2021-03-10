@@ -19,7 +19,7 @@ public class Controller {
         LocalDateTime now = LocalDateTime.now();
         return date.format(now);
     }
-    @RequestMapping("/hi")
+    @RequestMapping("/hi" )
     public String getHi(){
         return "Hi.";
     }
