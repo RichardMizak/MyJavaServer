@@ -2,12 +2,11 @@ package sk.kosickaakademia.sk;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.ArrayList;
@@ -65,5 +64,22 @@ public class JokeController {
             return ResponseEntity.status(200).contentType(MediaType.APPLICATION_JSON).body(o.toJSONString());
         }
     }
-
+   /* @PostMapping(path="/add")
+    public ResponseEntity<String> addJoke(@RequestBody String input){
+        try {
+            JSONObject o=(JSONObject) new JSONParser().parse(input);
+            String joke= String.valueOf(Integer.parseInt(String.valueOf(o.get("joke"))));
+            JSONObject r=new JSONObject();
+            ar.add(joke);
+            r.put("joke",joke);
+            return ResponseEntity.status(201).contentType(MediaType.APPLICATION_JSON).body(r.toJSONString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e){
+            JSONObject o=new JSONObject();
+            o.put("Error","Incorrect request");
+            return ResponseEntity.status(404).contentType(MediaType.APPLICATION_JSON).body(o.toJSONString());
+        }
+        return null;
+}*/
 }
