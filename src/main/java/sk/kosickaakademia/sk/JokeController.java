@@ -22,14 +22,17 @@ public class JokeController {
     List<String> ar = new ArrayList<String>();
 
 
+    public JokeController(){
+    ar.add(j1);
+    ar.add(j2);
+    ar.add(j3);
+    }
+
 
     @GetMapping("/jokes")
     public ResponseEntity<String> getJoke(){
         JSONObject o=new JSONObject();
         JSONArray jA=new JSONArray();
-        ar.add(j1);
-        ar.add(j2);
-        ar.add(j3);
         for(String s:ar){
         jA.add(s);
         o.put("jokes",jA);
@@ -39,9 +42,6 @@ public class JokeController {
     @GetMapping("/joke/{id}")
     public ResponseEntity<String> getJokeById(@PathVariable int id){
         JSONObject o=new JSONObject();
-        ar.add(j1);
-        ar.add(j2);
-        ar.add(j3);
         if(id>ar.size() || id<1){
             o.put("error","Invalid ID");
             return ResponseEntity.status(404).contentType(MediaType.APPLICATION_JSON).body(o.toJSONString());
@@ -53,9 +53,6 @@ public class JokeController {
     @GetMapping("/joke")
     public ResponseEntity<String> getRandomJoke() {
         JSONObject o = new JSONObject();
-        ar.add(j1);
-        ar.add(j2);
-        ar.add(j3);
         if (ar.size()==0) {
             o.put("error", "we don't have jokes");
             return ResponseEntity.status(404).contentType(MediaType.APPLICATION_JSON).body(o.toJSONString());
