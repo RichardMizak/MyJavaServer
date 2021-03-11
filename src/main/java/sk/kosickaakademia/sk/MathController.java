@@ -31,8 +31,8 @@ public class MathController {
     @GetMapping("/multiply")
     public ResponseEntity<String> multiply(@RequestParam(value="a")int a,@RequestParam(value="b")int b){
         int result=(a*b);
-        JSONObject obj=new JSONObject();
-        obj.put("result",result);
-        return ResponseEntity.status(200).contentType(MediaType.APPLICATION_JSON).body(obj.toJSONString());
+        JSONObject o=new JSONObject();
+        o.put("result",result);
+        return ResponseEntity.status(200).contentType(MediaType.APPLICATION_JSON).body(o.toJSONString());
     }
 }
