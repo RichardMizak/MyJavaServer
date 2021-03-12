@@ -64,22 +64,23 @@ public class JokeController {
             return ResponseEntity.status(200).contentType(MediaType.APPLICATION_JSON).body(o.toJSONString());
         }
     }
-   /* @PostMapping(path="/add")
-    public ResponseEntity<String> addJoke(@RequestBody String input){
+    @PostMapping(path="/joke/add")
+    public ResponseEntity<String> addJoke(@RequestBody String input) {
         try {
-            JSONObject o=(JSONObject) new JSONParser().parse(input);
-            String joke= String.valueOf(Integer.parseInt(String.valueOf(o.get("joke"))));
-            JSONObject r=new JSONObject();
+            JSONObject o = (JSONObject) new JSONParser().parse(input);
+            String joke = String.valueOf(o.get("joke"));
             ar.add(joke);
-            r.put("joke",joke);
-            return ResponseEntity.status(201).contentType(MediaType.APPLICATION_JSON).body(r.toJSONString());
+
+            return ResponseEntity.status(201).contentType(MediaType.APPLICATION_JSON).body("{}");
         } catch (ParseException e) {
             e.printStackTrace();
-        } catch (NumberFormatException e){
-            JSONObject o=new JSONObject();
-            o.put("Error","Incorrect request");
-            return ResponseEntity.status(404).contentType(MediaType.APPLICATION_JSON).body(o.toJSONString());
         }
-        return null;
-}*/
-}
+            return ResponseEntity.status(404).contentType(MediaType.APPLICATION_JSON).body("{}");
+        }
+    }
+
+
+
+
+
+
